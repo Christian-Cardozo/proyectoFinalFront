@@ -1,0 +1,111 @@
+{{> navbar}}
+
+<div class="container">
+    <br>
+</div>
+
+<div class="container">
+    <div class="row">
+        <table class="table" id="products">
+            <thead>
+                <tr>
+                    <th scope="col">Id</th>
+                    <th scope="col">Foto</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Descripcion</th>
+                    <th scope="col">Codigo</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Stock</th>
+                    <th scope="col">FechaCreacion</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each productos}}
+                <tr>
+                    <th scope="row">{{this.id}}</th>
+                    <td><img src="{{this.foto}}" alt="" width="50" height="50"></td>
+                    <td>{{this.nombre}}</td>
+                    <td>{{this.descripcion}}</td>
+                    <td>{{this.codigo}}</td>
+                    <td>${{this.precio}}</td>
+                    <td>{{this.stock}}</td>
+                    <td>{{this.timestamp}}</td>
+                    <td>
+                        <a href="javascript:void(0)"><i class="bi bi-trash" onclick="deleteProduct({{this.id}})"></i></a>
+                    </td>
+                    <td>
+                        <a href="javascript:void(0)"><i class="bi bi-pencil" onclick="editProduct({{this.id}})"></i></a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="container">
+    <div class="row mb-3">
+        <div class="col-1">
+            <a href="javascript:void(0)"  class="btn btn-success" onclick="newProduct()">Nuevo</a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <br>
+</div>
+
+<div class="container">
+    <div class="row">
+        <h2>Formulario de producto</h2>
+    </div>
+    <div class="row">
+        <form id="product_form">
+            <div class="row mb-3">
+                <div class="col col-md-2">
+                    <label for="id_prod" class="form-label">Id</label>
+                    <input type="text" class="form-control" id="id_prod" readonly>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" class="form-control" id="nombre">
+                </div>
+                <div class="col-md-6">
+                    <label for="codigo" class="form-label">Codigo</label>
+                    <input type="text" class="form-control" id="codigo">
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="descripcion" class="form-label">Descripcion</label>
+                <textarea type="text" class="form-control" id="descripcion" rows="3"></textarea>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="precio" class="form-label">Precio</label>
+                    <input type="text" class="form-control" id="precio">
+                </div>
+                <div class="col-md-6">
+                    <label for="stock" class="form-label">Stock</label>
+                    <input type="text" class="form-control" id="stock">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="foto" class="form-label">Foto</label>
+                    <input class="form-control" type="file" id="foto">
+                </div>
+                <div class="col-md-6">
+                    <label for="date" class="form-label">Fecha</label>
+                    <input type="date" class="form-control" id="date">
+                </div>
+            </div>
+            <div class="mb-3">
+                <a href="javascript:void(0)" class="btn btn-primary" onclick="saveProduct()">Guardar</a>
+            </div>
+        </form>
+    </div>
+</div>
